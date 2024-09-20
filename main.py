@@ -5,6 +5,7 @@ from PIL import Image, ImageTk
 window = tk.Tk()
 window.config(padx=50, pady=50, bg="white")
 window.title("Image Watermarking App")
+window.geometry("3000x900")
 img = None
 
 
@@ -25,14 +26,29 @@ def UploadAction():
         label_photo.image = img
 
 
-upload_button = tk.Button(window, text="Upload Image", command=UploadAction)
-upload_button.pack(side=tk.BOTTOM)
+def AddWatermark():
+    pass
 
-add_watermark_button = tk.Button(window, text="Add Watermark")
-add_watermark_button.pack(side=tk.BOTTOM)
 
-label_photo = tk.Label(window)
+menu = tk.Menu(window)
+window.config(menu=menu)
+filemenu = tk.Menu(menu)
+menu.add_cascade(label='Menu', menu=filemenu)
+
+filemenu.add_command(label='Open Picture', command=UploadAction)
+filemenu.add_command(label='Add Watermark')
+filemenu.add_command(label='Save')
+
+filemenu.add_separator()
+filemenu.add_command(label='Exit', command=window.quit)
+
+
+label_photo = tk.Label(window, bg="white")
 label_photo.pack()
 
 
 window.mainloop()
+
+
+
+
