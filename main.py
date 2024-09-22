@@ -27,7 +27,16 @@ def UploadAction():
 
 
 def AddWatermark():
-    pass
+    watermark_window = tk.Toplevel(window)
+    watermark_window.title("Add Watermark")
+
+    tk.Label(watermark_window, text="Enter Watermark Text:").pack(pady=10)
+    watermark_text = tk.Entry(watermark_window, width=30)
+    watermark_text.pack(pady=10)
+
+    tk.Label(watermark_window, text="Set Font Size:").pack(pady=10)
+    font_size = tk.Scale(watermark_window, from_=10, to=100, orient=tk.HORIZONTAL)
+    font_size.pack(pady=10)
 
 
 menu = tk.Menu(window)
@@ -36,7 +45,7 @@ filemenu = tk.Menu(menu)
 menu.add_cascade(label='Menu', menu=filemenu)
 
 filemenu.add_command(label='Open Picture', command=UploadAction)
-filemenu.add_command(label='Add Watermark')
+filemenu.add_command(label='Add Watermark', command=AddWatermark)
 filemenu.add_command(label='Save')
 
 filemenu.add_separator()
@@ -48,7 +57,3 @@ label_photo.pack()
 
 
 window.mainloop()
-
-
-
-
